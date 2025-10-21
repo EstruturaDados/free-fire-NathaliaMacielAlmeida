@@ -1,123 +1,153 @@
-# 🔫🎒 Desafio Código da Ilha – Edição Free Fire
+🔫🎒 Desafio Código da Ilha – Edição Free Fire
+Projeto desenvolvido por Nathalia Bento Maciel
 
-Bem-vindo ao **Desafio Código da Ilha – Edição Free Fire!**  
-Neste desafio, você irá simular o gerenciamento de um **inventário de sobrevivência** em uma ilha misteriosa, utilizando a linguagem **C**.
+Bem-vindo ao Desafio Código da Ilha – Edição Free Fire!
+Este projeto foi desenvolvido em linguagem C como parte da disciplina de Programação Estruturada, seguindo as instruções da empresa fictícia MateCheck.
 
-A empresa **MateCheck** encarregou você de desenvolver o sistema de **mochila virtual** que ajudará os sobreviventes a se prepararem para escapar da ilha.  
-O desafio é dividido em três níveis: **Novato**, **Aventureiro** e **Mestre**, cada um com mais complexidade e poder.
+O sistema simula o gerenciamento de uma mochila de sobrevivência em uma ilha misteriosa.
+O jogador pode adicionar, remover, listar e buscar itens, com diferentes níveis de complexidade conforme o progresso no desafio.
 
+🧭 Sobre o Projeto
 
-## 🎮 Nível Novato: Inventário Básico
+O código implementa um sistema de mochila com 3 níveis de dificuldade:
 
-### 🚩 Objetivo
+🥉 Nível Novato
 
-Criar um programa em C com as seguintes funcionalidades:
+Adicionar itens (nome, tipo, quantidade)
 
-- Adicionar itens à mochila (**nome**, **tipo** e **quantidade**)
-- Remover itens pelo nome
-- Listar os itens cadastrados
+Remover itens pelo nome
 
-### ⚙️ Funcionalidades
+Listar todos os itens cadastrados
 
-- Utilização de `struct` para representar cada item
-- Vetor estático com capacidade para até **10 itens**
-- Leitura e escrita via terminal (`scanf`, `printf`)
-- Menu interativo com `switch` e `do-while`
+🥈 Nível Aventureiro
 
-### 🧠 Simplicidade
+Inclui busca sequencial por nome
 
-- Sem ordenações, buscas especializadas ou uso de ponteiros
-- Ideal para praticar manipulação básica de estruturas e arrays
+Exibe os detalhes completos do item encontrado
 
-### 📥 Entrada
+🥇 Nível Mestre
 
-O usuário escolhe ações no menu e preenche os dados dos itens conforme solicitado.
+Adiciona o campo prioridade (1 a 5)
 
-### 📤 Saída
+Permite ordenar os itens por nome, tipo ou prioridade
 
-O programa exibe os dados organizados em formato de tabela, com nome, tipo e quantidade.
+Implementa busca binária, com contagem de comparações e verificação de ordenação prévia
 
+⚙️ Funcionalidades Técnicas Implementadas
 
+Uso de struct para representar cada item da mochila
 
-## 🛡️ Nível Aventureiro: Mochila com Busca
+Vetor estático com capacidade para até 20 itens (#define MAX_ITENS 20)
 
-### 🆕 Diferenças em relação ao Nível Novato
+Operações CRUD completas (Criar, Ler, Atualizar e Deletar)
 
-- Implementação de **busca sequencial** por nome
-- Novidade no menu: opção de **"Buscar item por nome"**
-- Exibição detalhada do item encontrado
+Funções modulares (adicionarItem, removerItem, listarItens, buscarItemSequencial, ordenarItens, buscaBinaria)
 
-### ⚙️ Funcionalidades
+Insertion Sort para ordenação
 
-- O usuário pode procurar qualquer item já inserido
-- Se encontrado, o programa exibe seus atributos
-- Caso contrário, exibe mensagem de erro amigável
+Busca binária otimizada com contador de comparações
 
-### 💡 Conceitos Adicionados
+Controle de entrada do usuário com limparBuffer() para evitar erros de leitura
 
-- **Busca sequencial**
-- **Comparação de strings** (`strcmp`)
-- **Controle com flag** para indicar se item foi encontrado
+Uso de stdbool.h para controle lógico (por exemplo, saber se a lista já está ordenada por nome)
 
-### 📥 Entrada
-
-O usuário digita o nome do item que deseja buscar.
-
-### 📤 Saída
-
-- Detalhes completos do item (nome, tipo, quantidade)
-- Ou uma mensagem de erro, se não for encontrado
-
----
-
-## 🧠 Nível Mestre: Ordenação e Busca Binária
-
-### 🆕 Diferenças em relação ao Nível Aventureiro
-
-- Adição do campo **prioridade** aos itens (valores de 1 a 5)
-- Possibilidade de **ordenar** a mochila por **nome**, **tipo** ou **prioridade**
-- Implementação da **busca binária** por nome com verificação de ordenação
-
-### ⚙️ Funcionalidades
-
-- **Menu de ordenação**: o jogador escolhe o critério desejado
-- Contador de **comparações na ordenação** para análise de desempenho
-- **Busca binária** com validação de pré-requisito (lista deve estar ordenada por nome)
-
-### 💡 Conceitos Adicionados
-
-- **Enumeração** (`enum`) para critérios de ordenação
-- **Ordenação com Insertion Sort**
-- **Busca binária** (`binary search`)
-- Uso de **bool** para controle de estado
-- **Análise de desempenho** com contador de comparações
-
-### 📥 Entrada
-
-O usuário:
-
-1. Adiciona itens com prioridade
-2. Ordena os itens
-3. Realiza busca binária pelo nome do item
-
-### 📤 Saída
-
-- Mochila **ordenada** com base no critério escolhido
-- Exibição dos **dados do item buscado** ou mensagem de erro
-- **Quantidade de comparações** realizadas durante a ordenação
+🧩 Estrutura do Código
+typedef struct {
+    char nome[30];
+    char tipo[20];
+    int quantidade;
+    int prioridade;
+} Item;
 
 
+Cada item da mochila contém:
 
-## 🏁 Conclusão
+nome: nome do item
 
-Ao completar qualquer nível do **Desafio Código da Ilha – Edição Free Fire**, você terá avançado significativamente na programação em **C**, desenvolvendo habilidades práticas de:
+tipo: categoria (ex: arma, alimento, item médico)
 
-- Manipulação de **estruturas e arrays**
-- Criação de **menus interativos**
-- Implementação de **buscas e ordenações**
-- **Pensamento modular** e boas práticas de software
+quantidade: número de unidades
 
-Cada nível representa uma missão rumo à **sobrevivência total**.  
-Escolha seu nível, prepare sua mochila... e **boa sorte na ilha!** 🏝️💼🔍
+prioridade: importância (1 = baixa, 5 = alta)
 
-> Equipe de Ensino – MateCheck
+💻 Como Executar o Programa
+🪟 No Windows (VS Code ou terminal)
+
+Abra o terminal na pasta do projeto
+
+Compile o programa com:
+
+gcc mochila_freefire.c -o mochila
+
+
+Execute:
+
+./mochila
+
+🐧 No Linux / Mac
+gcc mochila_freefire.c -o mochila
+./mochila
+
+🧠 Conceitos Aplicados
+
+Estruturas (struct)
+
+Vetores e manipulação de dados
+
+Controle de fluxo (switch, do-while)
+
+Funções e modularização
+
+Comparação de strings (strcmp)
+
+Ordenação por inserção (Insertion Sort)
+
+Busca binária (Binary Search)
+
+Contagem de comparações para análise de desempenho
+
+📈 Exemplo de Uso
+
+Menu Principal:
+
+=== Desafio Código da Ilha – Free Fire ===
+1. Adicionar item
+2. Remover item
+3. Listar itens
+4. Buscar item (sequencial)
+5. Ordenar itens
+6. Buscar item (binária por nome)
+0. Sair
+
+
+Saída de exemplo:
+
+--- Itens na mochila (3) ---
+Nome                 | Tipo       | Qtd   | Prioridade
+Medkit               | Cura       | 2     | 4
+AK47                 | Arma       | 1     | 5
+Granada              | Arma       | 3     | 3
+
+🏁 Conclusão
+
+Ao concluir este projeto, foi possível:
+
+Exercitar conceitos de estrutura de dados e algoritmos de busca e ordenação
+
+Aplicar boas práticas de modularização em C
+
+Entender a importância de organização e validação em programas interativos
+
+“Cada linha de código é um passo a mais rumo à sobrevivência na ilha!” 🏝️
+
+👩‍💻 Autoria e Créditos
+
+Desenvolvido por: Nathalia Bento Maciel
+
+Orientação: Equipe de Ensino – MateCheck
+
+Curso: Sistemas de Informação – Estácio
+
+Linguagem: C
+
+Tema: Estruturas, Ordenação e Busca
